@@ -21,7 +21,7 @@ public class SQLConnectionFactory {
                    senha = dbProps.getProperty("db.senha");
             
             System.out.println("Valor url: " + url);
-            if (url == null || url.isEmpty()) {
+            if (url == null || url.isEmpty() || url.trim().equals("${db.url}")) {
                 String connectionUrl = System.getenv("JDBC_DATABASE_URL");
                 return DriverManager.getConnection(connectionUrl);
             }
