@@ -1,7 +1,11 @@
 
 package com.orangewall.heroesofserver.servlet;
 
+import com.orangewall.heroesofserver.util.SQL;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +19,15 @@ public class SimpleServletTest extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         
-        resp.getWriter().print("Simple Servlet Response");
+        try (PrintWriter pw = resp.getWriter()) {
+            ResultSet rs = SQL.query("SELECT * FROM scene");
+
+            while (rs.next()) {
+                pw.println("Registro da cena: " + rs.getObject("codScene"));
+            }            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         
     }
     
