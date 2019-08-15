@@ -92,9 +92,6 @@
     <profiles>
         <profile>
             <id>dev-daniel</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <db.url>jdbc:postgresql://localhost:5432/heroesof</db.url>
                 <db.usuario>postgres</db.usuario>

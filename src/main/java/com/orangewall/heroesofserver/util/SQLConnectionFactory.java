@@ -15,14 +15,18 @@ public class SQLConnectionFactory {
     public Connection getConnection() {
         
         try {
-            if (false) {
-                throw new ClassNotFoundException();
-            }
-            Class.forName("org.postgresql.Driver");
             Properties dbProps = IO.getProperties("/configuracoes.properties");
             String url = dbProps.getProperty("db.url"),
                    usuario = dbProps.getProperty("db.usuario"),
                    senha = dbProps.getProperty("db.senha");
+            
+            System.out.println("Valor url: " + url);
+            if (url == null || url.isEmpty()) {
+                String connectionUrl = System.getenv("JDBC_DATABASE_URL");
+                return DriverManager.getConnection(connectionUrl);
+            }
+            
+            Class.forName("org.postgresql.Driver");                    
             return DriverManager.getConnection(
                     url + "?"
                     + "autoReconnect=false"
