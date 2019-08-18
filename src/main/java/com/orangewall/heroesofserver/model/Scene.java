@@ -9,12 +9,12 @@ public class Scene {
     
     @PrimaryKey private Integer codCutscene;
     @PrimaryKey private Integer codScene;
-    private String txtMessage;
+    private String desScene;
 
-    public Scene(Integer codCutscene, Integer codScene, String txtMessage) {
+    public Scene(Integer codCutscene, Integer codScene, String desScene) {
         this.codCutscene = codCutscene;
         this.codScene = codScene;
-        this.txtMessage = txtMessage;
+        this.desScene = desScene;
     }
 
     public Scene() {
@@ -36,17 +36,17 @@ public class Scene {
         this.codScene = codScene;
     }
 
-    public String getTxtMessage() {
-        return txtMessage;
+    public String getDesScene() {
+        return desScene;
     }
 
-    public void setTxtMessage(String txtMessage) {
-        this.txtMessage = txtMessage;
+    public void setDesScene(String desScene) {
+        this.desScene = desScene;
     }
 
     @Override
     public String toString() {
-        return String.format("{cutscene: %d, scene: %d, message: %s}", codCutscene, codScene, txtMessage);
+        return String.format("{cutscene: %d, scene: %d, desScene: %s}", codCutscene, codScene, desScene);
     }
     
 }
