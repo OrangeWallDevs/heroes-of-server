@@ -20,6 +20,8 @@ import com.orangewall.heroesofserver.annotation.PrimaryKey;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import com.orangewall.heroesofserver.annotation.Entity;
+import com.orangewall.heroesofserver.model.Phase;
+import org.postgresql.util.PGobject;
 
 /**
  * Reúne ações básicas para a realização de requisições ao banco de dados.
@@ -170,10 +172,18 @@ public final class SQL {
     public static <T> List<T> getRegistros(Class<T> classe)
             throws NotTableException {
         
+        return getRegistros(classe, "");
+        
+    }
+    
+    public static <T> List<T> getRegistros(Class<T> classe, String complement)
+            throws NotTableException {
+        
         List<T> registros = new LinkedList<>();
         String[] nomesCampos = Reflection.getAtributos(classe);
+        String sql = "SELECT * FROM " + getNomeTabela(classe) + " " + complement;
         
-        try (ResultSet rs = query("SELECT * FROM " + getNomeTabela(classe))) {
+        try (ResultSet rs = query(sql)) {
             while (rs.next()) {
                 T objeto = classe.newInstance();
                 for (String campo : nomesCampos) {
@@ -193,7 +203,10 @@ public final class SQL {
                     } else if (val instanceof Integer 
                             && classeCampo.equals(Boolean.class)) {
                         val = val.equals(1); // converte para Boolean
-                    } else if (val instanceof String && metValueOf != null) {
+                    } else if ((val instanceof String || val instanceof PGobject) && metValueOf != null) {
+                        if (val instanceof PGobject) {
+                            val = ((PGobject) val).getValue().trim().toUpperCase();
+                        }
                         val = metValueOf.invoke(null, val);
                     }
                     Reflection.setAtributo(objeto, campo, val);
