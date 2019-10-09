@@ -5,7 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.orangewall.heroesofserver.exception.NotTableException;
-import com.orangewall.heroesofserver.model.Scene;
+import com.orangewall.heroesofserver.model.*;
 import com.orangewall.heroesofserver.util.JSON;
 import com.orangewall.heroesofserver.util.SQL;
 import java.io.IOException;
@@ -16,14 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/getGamePrimaryData")
-public class GetGamePrimaryData extends HttpServlet {
+public class GetPrimaryData extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         
         Class<?>[] entityClasses = {
-            Scene.class
+            GameUser.class, Part.class, Phase.class, Score.class, Troop.class,
+            Barrack.class, Tower.class, Hero.class, Skill.class, Cutscene.class,
+            Scene.class, Speak.class, AssetFilter.class
         };
         JsonParser parser = new JsonParser();
         JsonObject jsonResponse = new JsonObject();
@@ -38,9 +40,8 @@ public class GetGamePrimaryData extends HttpServlet {
 
                 table.add("primaryKeys", primaryKeys);
                 table.add("records", records);
-
+                
                 jsonResponse.add(SQL.getNomeTabela(entityClass), table);
-                resp.setStatus(200);
             } catch (NotTableException ex) {
                 System.out.println("Erro ao operar com a classe " + entityClass);
                 System.out.println(ex);
@@ -49,6 +50,7 @@ public class GetGamePrimaryData extends HttpServlet {
         
         System.out.println(jsonResponse);
         resp.getWriter().print(jsonResponse);
+        resp.setStatus(200);
         
     }
     
