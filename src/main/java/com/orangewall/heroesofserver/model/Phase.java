@@ -12,11 +12,11 @@ public class Phase {
     private String namPhase;
     private Integer vlrIniPlayerMoney;
     private Integer vlrIniIAMoney;
-    private String idtPhaseType;
+    private PhaseType idtPhaseType;
 
     
     public Phase(Integer numPhase, Integer codPart, String namPhase
-            , Integer vlrIniPlayerMoney, Integer vlrIniIAMoney, String idtPhaseType) {
+            , Integer vlrIniPlayerMoney, Integer vlrIniIAMoney, PhaseType idtPhaseType) {
         this.numPhase = numPhase;
         this.codPart = codPart;
         this.namPhase = namPhase;
@@ -68,11 +68,11 @@ public class Phase {
         this.vlrIniIAMoney = vlrIniIAMoney;
     }
 
-    public String getIdtPhaseType() {
+    public PhaseType getIdtPhaseType() {
         return idtPhaseType;
     }
 
-    public void setIdtPhaseType(String idtPhaseType) {
+    public void setIdtPhaseType(PhaseType idtPhaseType) {
         this.idtPhaseType = idtPhaseType;
     }
 
