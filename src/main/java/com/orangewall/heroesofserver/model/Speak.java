@@ -8,8 +8,8 @@ import com.orangewall.heroesofserver.annotation.Entity;
 public class Speak {
 
     @PrimaryKey private Integer codSpeak;
-    private Integer codCutscene;
-    private Integer codScene;
+    @PrimaryKey private Integer codCutscene;
+    @PrimaryKey private Integer codScene;
     private String txtSpeak;
     private String txtSceneImgPath;
 
@@ -63,7 +63,5 @@ public class Speak {
     public void setTxtSceneImgPath(String txtSceneImgPath) {
         this.txtSceneImgPath = txtSceneImgPath;
     }
-
-    
     
 }

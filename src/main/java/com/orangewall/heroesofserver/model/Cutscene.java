@@ -6,10 +6,11 @@ import com.orangewall.heroesofserver.annotation.Entity;
 
 @Entity("cutscene")
 public class Cutscene {
-    @PrimaryKey private int codCutscene;
-     private int codPart;
+    
+    @PrimaryKey private Integer codCutscene;
+     private Integer codPart;
 
-    public Cutscene(int codCutscene, int codPart) {
+    public Cutscene(Integer codCutscene, Integer codPart) {
         this.codCutscene = codCutscene;
         this.codPart = codPart;
     }
@@ -17,23 +18,20 @@ public class Cutscene {
     public Cutscene() {
     }
 
-    public int getCodCutscene() {
+    public Integer getCodCutscene() {
         return codCutscene;
     }
 
-    public void setCodCutscene(int codCutscene) {
+    public void setCodCutscene(Integer codCutscene) {
         this.codCutscene = codCutscene;
     }
 
-    public int getCodPart() {
+    public Integer getCodPart() {
         return codPart;
     }
 
-    public void setCodPart(int codPart) {
+    public void setCodPart(Integer codPart) {
         this.codPart = codPart;
     }
-     
-     
-    
 
 }

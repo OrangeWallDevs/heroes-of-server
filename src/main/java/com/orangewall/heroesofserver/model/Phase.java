@@ -10,8 +10,8 @@ public class Phase {
     @PrimaryKey private Integer numPhase;
     private Integer codPart;
     private String namPhase;
-    private Integer vlrIniPlayerMoney;
-    private Integer vlrIniIAMoney;
+    private Integer valIniPlayerMoney;
+    private Integer valIniIAMoney;
     private PhaseType idtPhaseType;
 
     
@@ -20,8 +20,8 @@ public class Phase {
         this.numPhase = numPhase;
         this.codPart = codPart;
         this.namPhase = namPhase;
-        this.vlrIniPlayerMoney = vlrIniPlayerMoney;
-        this.vlrIniIAMoney = vlrIniIAMoney;
+        this.valIniPlayerMoney = valIniPlayerMoney;
+        this.valIniIAMoney = valIniIAMoney;
         this.idtPhaseType = idtPhaseType;
     }    
     
@@ -52,20 +52,20 @@ public class Phase {
         this.namPhase = namPhase;
     }
 
-    public Integer getVlrIniPlayerMoney() {
-        return vlrIniPlayerMoney;
+    public Integer getValIniPlayerMoney() {
+        return valIniPlayerMoney;
     }
 
-    public void setVlrIniPlayerMoney(Integer vlrIniPlayerMoney) {
-        this.vlrIniPlayerMoney = vlrIniPlayerMoney;
+    public void setValIniPlayerMoney(Integer valIniPlayerMoney) {
+        this.valIniPlayerMoney = valIniPlayerMoney;
     }
 
-    public Integer getVlrIniIAMoney() {
-        return vlrIniIAMoney;
+    public Integer getValIniIAMoney() {
+        return valIniIAMoney;
     }
 
-    public void setVlrIniIAMoney(Integer vlrIniIAMoney) {
-        this.vlrIniIAMoney = vlrIniIAMoney;
+    public void setValIniIAMoney(Integer valIniIAMoney) {
+        this.valIniIAMoney = valIniIAMoney;
     }
 
     public PhaseType getIdtPhaseType() {
@@ -75,8 +75,5 @@ public class Phase {
     public void setIdtPhaseType(PhaseType idtPhaseType) {
         this.idtPhaseType = idtPhaseType;
     }
-
-
-    
     
 }

@@ -8,20 +8,20 @@ import com.orangewall.heroesofserver.annotation.Entity;
 public class Skill {
     
     @PrimaryKey private Integer codSkill;
-    private Integer codHero;
+    @PrimaryKey private Integer codHero;
     private String namSkill;
     private String desSkill;
-    private Integer vlrDamage;
+    private Integer valDamage;
     private Integer numEffectArea;
     private Integer numCooldown;
     private boolean idtAttributeBuff;   
 
-    public Skill(Integer codSkill, Integer codHero, String namSkill, String desSkill, Integer vlrDamage, Integer numEffectArea, Integer numCooldown, boolean idtAttributeBuff) {
+    public Skill(Integer codSkill, Integer codHero, String namSkill, String desSkill, Integer valDamage, Integer numEffectArea, Integer numCooldown, boolean idtAttributeBuff) {
         this.codSkill = codSkill;
         this.codHero = codHero;
         this.namSkill = namSkill;
         this.desSkill = desSkill;
-        this.vlrDamage = vlrDamage;
+        this.valDamage = valDamage;
         this.numEffectArea = numEffectArea;
         this.numCooldown = numCooldown;
         this.idtAttributeBuff = idtAttributeBuff;
@@ -62,12 +62,12 @@ public class Skill {
         this.desSkill = desSkill;
     }
 
-    public Integer getVlrDamage() {
-        return vlrDamage;
+    public Integer getValDamage() {
+        return valDamage;
     }
 
-    public void setVlrDamage(Integer vlrDamage) {
-        this.vlrDamage = vlrDamage;
+    public void setValDamage(Integer valDamage) {
+        this.valDamage = valDamage;
     }
 
     public Integer getNumEffectArea() {
@@ -93,7 +93,5 @@ public class Skill {
     public void setIdtAttributeBuff(boolean idtAttributeBuff) {
         this.idtAttributeBuff = idtAttributeBuff;
     }
-    
-    
     
 }

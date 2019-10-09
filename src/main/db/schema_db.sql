@@ -6,7 +6,7 @@
 
 -- \c heroesof;
 
-DROP TABLE IF EXISTS "User", Part, Phase, Score, Troop, Barrack, Tower, Hero, Skill, Cutscene, Scene, Speak, AssetFilter;
+DROP TABLE IF EXISTS GameUser, Part, Phase, Score, Troop, Barrack, Tower, Hero, Skill, Cutscene, Scene, Speak, AssetFilter;
 
 -- "CREATE TYPE" section
 
@@ -25,16 +25,16 @@ CREATE TABLE Part (
 );
 
 CREATE TABLE Phase (
-    numPhase INTEGER NOT NULL,
     codPart INTEGER NOT NULL REFERENCES Part (codPart),
+    numPhase INTEGER NOT NULL,
     namPhase VARCHAR NOT NULL,
-    vlrIniPlayerMoney INTEGER NOT NULL,
-    vlrIniIAMoney INTEGER NOT NULL,
+    valIniPlayerMoney INTEGER NOT NULL,
+    valIniIAMoney INTEGER NOT NULL,
     idtPhaseType PhaseType NOT NULL,
     PRIMARY KEY (numPhase)
 );
 
-CREATE TABLE "User" (
+CREATE TABLE GameUser (
     idtGoogleAccount VARCHAR NOT NULL,
     numCurrentPhase INTEGER NOT NULL REFERENCES Phase (numPhase),
     namUser VARCHAR NOT NULL,
@@ -42,21 +42,22 @@ CREATE TABLE "User" (
 );
 
 CREATE TABLE Score (
-    idtGoogleAccount VARCHAR NOT NULL REFERENCES "User" (idtGoogleAccount),
+    idtGoogleAccount VARCHAR NOT NULL REFERENCES GameUser (idtGoogleAccount),
     numPhase INTEGER NOT NULL REFERENCES Phase (numPhase),
-    vlrRecordPoints INTEGER,
+    valRecordPoints INTEGER,
     PRIMARY KEY (idtGoogleAccount, numPhase)
 );
 
 CREATE TABLE Troop (
     codTroop INTEGER NOT NULL,
     namTroop VARCHAR NOT NULL,
-    vlrDamageDealt INTEGER NOT NULL,
-    vlrHp INTEGER NOT NULL,
-    vlrScore INTEGER NOT NULL,
-    vlrMotionSpeed FLOAT NOT NULL,
-    vlrAttackSpeed FLOAT NOT NULL,
-    vlrDropMoney INTEGER NOT NULL,
+    assetIdentifier VARCHAR NOT NULL,
+    valDamageDealt INTEGER NOT NULL,
+    valHp INTEGER NOT NULL,
+    valScore INTEGER NOT NULL,
+    valMotionSpeed FLOAT NOT NULL,
+    valAttackSpeed FLOAT NOT NULL,
+    valDropMoney INTEGER NOT NULL,
     PRIMARY KEY (codTroop)
 );
 
@@ -66,15 +67,16 @@ CREATE TABLE Barrack (
     codTroop INTEGER NOT NULL REFERENCES Troop (codTroop),
     namBarrack VARCHAR NOT NULL,
     desBarrack VARCHAR NOT NULL,
-    vlrSpawnFrequency INTEGER NOT NULL,
-    vlrCost INTEGER NOT NULL,
+    assetIdentifier VARCHAR NOT NULL,
+    valSpawnFrequency INTEGER NOT NULL,
+    valCost INTEGER NOT NULL,
     numTroopLimit INTEGER NOT NULL,
     PRIMARY KEY (codBarrack)
 );
 
 CREATE TABLE Tower (
     codTower INTEGER NOT NULL,
-    vlrHp INTEGER NOT NULL,
+    valHp INTEGER NOT NULL,
     numEffectArea INTEGER NOT NULL,
     PRIMARY KEY (codTower)
 );
@@ -84,25 +86,26 @@ CREATE TABLE Hero (
     codPart INTEGER NOT NULL REFERENCES Part (codPart),
     namHero VARCHAR NOT NULL,
     desHero VARCHAR NOT NULL,
-    vlrHp INTEGER NOT NULL,
-    vlrScore INTEGER NOT NULL,
-    vlrDamageDealt INTEGER NOT NULL,
-    vlrMotionSpeed FLOAT NOT NULL,
-    vlrAttackSpeed FLOAT NOT NULL,
-    vlrDropMoney INTEGER NOT NULL,
+    assetIdentifier VARCHAR NOT NULL,
+    valHp INTEGER NOT NULL,
+    valScore INTEGER NOT NULL,
+    valDamageDealt INTEGER NOT NULL,
+    valMotionSpeed FLOAT NOT NULL,
+    valAttackSpeed FLOAT NOT NULL,
+    valDropMoney INTEGER NOT NULL,
     PRIMARY KEY (codHero)
 );
 
 CREATE TABLE Skill (
-    codSkill INTEGER NOT NULL,
     codHero INTEGER NOT NULL REFERENCES Hero (codHero),
+    codSkill INTEGER NOT NULL,
     namSkill VARCHAR NOT NULL,
     desSkill VARCHAR NOT NULL,
-    vlrDamage INTEGER,
+    valDamage INTEGER,
     numEffectArea INTEGER NOT NULL,
     numCooldown INTEGER NOT NULL,
     idtAttributeBuff BOOLEAN NOT NULL,
-    PRIMARY KEY (codSkill)
+    PRIMARY KEY (codSkill, codHero)
 );
 
 CREATE TABLE Cutscene (
@@ -127,8 +130,8 @@ CREATE TABLE Speak (
 );
 
 CREATE TABLE AssetFilter (
-    namTable VARCHAR NOT NULL UNIQUE,
-    txtAssetFilter VARCHAR NOT NULL,
-    txtAssetPath VARCHAR NOT NULL,
+    namTable VARCHAR NOT NULL,
+    txtAssetFilter VARCHAR,
+    txtAssetPath VARCHAR,
     PRIMARY KEY (namTable)
 );

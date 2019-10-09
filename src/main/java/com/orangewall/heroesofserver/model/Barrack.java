@@ -7,34 +7,34 @@ import com.orangewall.heroesofserver.annotation.Entity;
 @Entity("barrack")
 public class Barrack {
     
-    @PrimaryKey private int codBarrack;
+    @PrimaryKey private Integer codBarrack;
     private Integer codPart;
     private Integer codTroop;
     private String namBarrack;
     private String desBarrack;
-    private Integer vlrSpawnFrequency;
-    private Integer vlrCost;
+    private Integer valSpawnFrequency;
+    private Integer valCost;
     private Integer numTroopLimit;
 
-    public Barrack(int codBarrack, Integer codPart, Integer codTroop, String namBarrack, String desBarrack, Integer vlrSpawnFrequency, Integer vlrCost, Integer numTroopLimit) {
+    public Barrack(Integer codBarrack, Integer codPart, Integer codTroop, String namBarrack, String desBarrack, Integer valSpawnFrequency, Integer valCost, Integer numTroopLimit) {
         this.codBarrack = codBarrack;
         this.codPart = codPart;
         this.codTroop = codTroop;
         this.namBarrack = namBarrack;
         this.desBarrack = desBarrack;
-        this.vlrSpawnFrequency = vlrSpawnFrequency;
-        this.vlrCost = vlrCost;
+        this.valSpawnFrequency = valSpawnFrequency;
+        this.valCost = valCost;
         this.numTroopLimit = numTroopLimit;
     }
 
     public Barrack() {
     }
 
-    public int getCodBarrack() {
+    public Integer getCodBarrack() {
         return codBarrack;
     }
 
-    public void setCodBarrack(int codBarrack) {
+    public void setCodBarrack(Integer codBarrack) {
         this.codBarrack = codBarrack;
     }
 
@@ -70,20 +70,20 @@ public class Barrack {
         this.desBarrack = desBarrack;
     }
 
-    public Integer getVlrSpawnFrequency() {
-        return vlrSpawnFrequency;
+    public Integer getValSpawnFrequency() {
+        return valSpawnFrequency;
     }
 
-    public void setVlrSpawnFrequency(Integer vlrSpawnFrequency) {
-        this.vlrSpawnFrequency = vlrSpawnFrequency;
+    public void setValSpawnFrequency(Integer valSpawnFrequency) {
+        this.valSpawnFrequency = valSpawnFrequency;
     }
 
-    public Integer getVlrCost() {
-        return vlrCost;
+    public Integer getValCost() {
+        return valCost;
     }
 
-    public void setVlrCost(Integer vlrCost) {
-        this.vlrCost = vlrCost;
+    public void setValCost(Integer valCost) {
+        this.valCost = valCost;
     }
 
     public Integer getNumTroopLimit() {
@@ -92,8 +92,6 @@ public class Barrack {
 
     public void setNumTroopLimit(Integer numTroopLimit) {
         this.numTroopLimit = numTroopLimit;
-    }
-    
-    
+    }    
     
 }

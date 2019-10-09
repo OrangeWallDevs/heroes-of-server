@@ -9,22 +9,22 @@ public class Troop {
     
     @PrimaryKey private Integer codTroop;
     private String namTroop;
-    private Integer vlrDamageDealt;
-    private Integer vlrHp;
-    private Integer vlrScore;
-    private Integer vlrMotionSpeed;
-    private Integer vlrAttackSpeed;
-    private Integer vlrDropMoney;
+    private Integer valDamageDealt;
+    private Integer valHp;
+    private Integer valScore;
+    private Float valMotionSpeed;
+    private Float valAttackSpeed;
+    private Integer valDropMoney;
 
-    public Troop(Integer codTroop, String namTroop, Integer vlrDamageDealt, Integer vlrHp, Integer vlrScore, Integer vlrMotionSpeed, Integer vlrAttackSpeed, Integer vlrDropMoney) {
+    public Troop(Integer codTroop, String namTroop, Integer valDamageDealt, Integer valHp, Integer valScore, Float valMotionSpeed, Float valAttackSpeed, Integer valDropMoney) {
         this.codTroop = codTroop;
         this.namTroop = namTroop;
-        this.vlrDamageDealt = vlrDamageDealt;
-        this.vlrHp = vlrHp;
-        this.vlrScore = vlrScore;
-        this.vlrMotionSpeed = vlrMotionSpeed;
-        this.vlrAttackSpeed = vlrAttackSpeed;
-        this.vlrDropMoney = vlrDropMoney;
+        this.valDamageDealt = valDamageDealt;
+        this.valHp = valHp;
+        this.valScore = valScore;
+        this.valMotionSpeed = valMotionSpeed;
+        this.valAttackSpeed = valAttackSpeed;
+        this.valDropMoney = valDropMoney;
     }
 
     public Troop() {
@@ -46,53 +46,52 @@ public class Troop {
         this.namTroop = namTroop;
     }
 
-    public Integer getVlrDamageDealt() {
-        return vlrDamageDealt;
+    public Integer getValDamageDealt() {
+        return valDamageDealt;
     }
 
-    public void setVlrDamageDealt(Integer vlrDamageDealt) {
-        this.vlrDamageDealt = vlrDamageDealt;
+    public void setValDamageDealt(Integer valDamageDealt) {
+        this.valDamageDealt = valDamageDealt;
     }
 
-    public Integer getVlrHp() {
-        return vlrHp;
+    public Integer getValHp() {
+        return valHp;
     }
 
-    public void setVlrHp(Integer vlrHp) {
-        this.vlrHp = vlrHp;
+    public void setValHp(Integer valHp) {
+        this.valHp = valHp;
     }
 
-    public Integer getVlrScore() {
-        return vlrScore;
+    public Integer getValScore() {
+        return valScore;
     }
 
-    public void setVlrScore(Integer vlrScore) {
-        this.vlrScore = vlrScore;
+    public void setValScore(Integer valScore) {
+        this.valScore = valScore;
     }
 
-    public Integer getVlrMotionSpeed() {
-        return vlrMotionSpeed;
+    public Float getValMotionSpeed() {
+        return valMotionSpeed;
     }
 
-    public void setVlrMotionSpeed(Integer vlrMotionSpeed) {
-        this.vlrMotionSpeed = vlrMotionSpeed;
+    public void setValMotionSpeed(Float valMotionSpeed) {
+        this.valMotionSpeed = valMotionSpeed;
     }
 
-    public Integer getVlrAttackSpeed() {
-        return vlrAttackSpeed;
+    public Float getValAttackSpeed() {
+        return valAttackSpeed;
     }
 
-    public void setVlrAttackSpeed(Integer vlrAttackSpeed) {
-        this.vlrAttackSpeed = vlrAttackSpeed;
+    public void setValAttackSpeed(Float valAttackSpeed) {
+        this.valAttackSpeed = valAttackSpeed;
     }
 
-    public Integer getVlrDropMoney() {
-        return vlrDropMoney;
+    public Integer getValDropMoney() {
+        return valDropMoney;
     }
 
-    public void setVlrDropMoney(Integer vlrDropMoney) {
-        this.vlrDropMoney = vlrDropMoney;
+    public void setValDropMoney(Integer valDropMoney) {
+        this.valDropMoney = valDropMoney;
     }
-    
     
 }

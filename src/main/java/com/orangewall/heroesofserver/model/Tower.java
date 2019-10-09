@@ -8,12 +8,12 @@ import com.orangewall.heroesofserver.annotation.Entity;
 public class Tower {
 
     @PrimaryKey private Integer codTower;
-    private Integer vlrHp;
+    private Integer valHp;
     private Integer numEffectArea;
 
-    public Tower(Integer codTower, Integer vlrHp, Integer numEffectArea) {
+    public Tower(Integer codTower, Integer valHp, Integer numEffectArea) {
         this.codTower = codTower;
-        this.vlrHp = vlrHp;
+        this.valHp = valHp;
         this.numEffectArea = numEffectArea;
     }
 
@@ -28,12 +28,12 @@ public class Tower {
         this.codTower = codTower;
     }
 
-    public Integer getVlrHp() {
-        return vlrHp;
+    public Integer getValHp() {
+        return valHp;
     }
 
-    public void setVlrHp(Integer vlrHp) {
-        this.vlrHp = vlrHp;
+    public void setValHp(Integer valHp) {
+        this.valHp = valHp;
     }
 
     public Integer getNumEffectArea() {
@@ -43,6 +43,5 @@ public class Tower {
     public void setNumEffectArea(Integer numEffectArea) {
         this.numEffectArea = numEffectArea;
     }
-    
     
 }

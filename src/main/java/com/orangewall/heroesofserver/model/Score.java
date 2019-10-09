@@ -9,12 +9,12 @@ public class Score {
     
    @PrimaryKey private String idtGoogleAccount;
    @PrimaryKey private Integer numPhase;  
-    private Integer vlrRecordPoints;
+    private Integer valRecordPoints;
 
-    public Score(String idtGoogleAccount, Integer numPhase, Integer vlrRecordPoints) {
+    public Score(String idtGoogleAccount, Integer numPhase, Integer valRecordPoints) {
         this.idtGoogleAccount = idtGoogleAccount;
         this.numPhase = numPhase;
-        this.vlrRecordPoints = vlrRecordPoints;
+        this.valRecordPoints = valRecordPoints;
     }
 
     public Score() {
@@ -36,15 +36,12 @@ public class Score {
         this.numPhase = numPhase;
     }
 
-    public Integer getVlrRecordPoints() {
-        return vlrRecordPoints;
+    public Integer getValRecordPoints() {
+        return valRecordPoints;
     }
 
-    public void setVlrRecordPoints(Integer vlrRecordPoints) {
-        this.vlrRecordPoints = vlrRecordPoints;
+    public void setValRecordPoints(Integer valRecordPoints) {
+        this.valRecordPoints = valRecordPoints;
     }
-
-    
-    
     
 }
