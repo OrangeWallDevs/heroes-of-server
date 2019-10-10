@@ -23,10 +23,11 @@ public class GetPrimaryData extends HttpServlet {
             throws ServletException, IOException {
         
         resp.setCharacterEncoding("UTF-8");
+        
         Class<?>[] entityClasses = {
-            GameUser.class, Part.class, Phase.class, Score.class, Troop.class,
-            Barrack.class, Tower.class, Hero.class, Skill.class, Cutscene.class,
-            Scene.class, Speak.class, AssetFilter.class
+            AssetFilter.class, Score.class, Part.class, Phase.class,
+            GameUser.class, Troop.class, Barrack.class, Tower.class, Skill.class,
+            Hero.class, Speak.class, Scene.class, Cutscene.class
         };
         JsonParser parser = new JsonParser();
         JsonObject jsonResponse = new JsonObject();
@@ -49,7 +50,6 @@ public class GetPrimaryData extends HttpServlet {
             }
         }
         
-        System.out.println(jsonResponse);
         resp.getWriter().print(jsonResponse);
         resp.setStatus(200);
         
