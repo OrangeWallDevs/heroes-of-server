@@ -23,6 +23,7 @@ public class GetPrimaryData extends HttpServlet {
             throws ServletException, IOException {
         
         resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
         
         Class<?>[] entityClasses = {
             AssetFilter.class, Score.class, Part.class, Phase.class,
