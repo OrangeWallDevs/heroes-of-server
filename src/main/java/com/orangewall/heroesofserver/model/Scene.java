@@ -10,6 +10,7 @@ public class Scene {
     @PrimaryKey private Integer codCutscene;
     @PrimaryKey private Integer codScene;
     private String desScene;
+    private String txtImagePath;
 
     public Scene(Integer codCutscene, Integer codScene, String desScene) {
         this.codCutscene = codCutscene;
@@ -44,9 +45,12 @@ public class Scene {
         this.desScene = desScene;
     }
 
-    @Override
-    public String toString() {
-        return String.format("{cutscene: %d, scene: %d, desScene: %s}", codCutscene, codScene, desScene);
+    public String getTxtImagePath() {
+        return txtImagePath;
+    }
+
+    public void setTxtImagePath(String txtImagePath) {
+        this.txtImagePath = txtImagePath;
     }
     
 }

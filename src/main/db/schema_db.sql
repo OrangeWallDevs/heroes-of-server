@@ -1,12 +1,5 @@
--- DROP DATABASE IF EXISTS heroesof;
 
--- CREATE DATABASE heroesof
---     WITH
---     ENCODING = 'UTF8';
-
--- \c heroesof;
-
-DROP TABLE IF EXISTS GameUser, Part, Phase, Score, Troop, Barrack, Tower, Hero, Skill, Cutscene, Scene, Speak, AssetFilter;
+DROP TABLE IF EXISTS Score, GameUser, Phase, Barrack, Skill, Hero, Speak, Scene, Cutscene, Part, Troop, Tower, AssetFilter;
 
 -- "CREATE TYPE" section
 
@@ -17,6 +10,13 @@ EXCEPTION
 END $$;
 
 -- "CREATE TABLE" section
+
+CREATE TABLE AssetFilter (
+    namTable VARCHAR NOT NULL,
+    txtAssetFilter VARCHAR,
+    txtAssetPath VARCHAR,
+    PRIMARY KEY (namTable)
+);
 
 CREATE TABLE Part (
     codPart INTEGER NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE Score (
 CREATE TABLE Troop (
     codTroop INTEGER NOT NULL,
     namTroop VARCHAR NOT NULL,
-    assetIdentifier VARCHAR NOT NULL,
+    txtAssetIdentifier VARCHAR NOT NULL,
     valDamageDealt INTEGER NOT NULL,
     valHp INTEGER NOT NULL,
     valScore INTEGER NOT NULL,
@@ -67,7 +67,6 @@ CREATE TABLE Barrack (
     codTroop INTEGER NOT NULL REFERENCES Troop (codTroop),
     namBarrack VARCHAR NOT NULL,
     desBarrack VARCHAR NOT NULL,
-    assetIdentifier VARCHAR NOT NULL,
     valSpawnFrequency INTEGER NOT NULL,
     valCost INTEGER NOT NULL,
     numTroopLimit INTEGER NOT NULL,
@@ -86,7 +85,7 @@ CREATE TABLE Hero (
     codPart INTEGER NOT NULL REFERENCES Part (codPart),
     namHero VARCHAR NOT NULL,
     desHero VARCHAR NOT NULL,
-    assetIdentifier VARCHAR NOT NULL,
+    txtAssetIdentifier VARCHAR NOT NULL,
     valHp INTEGER NOT NULL,
     valScore INTEGER NOT NULL,
     valDamageDealt INTEGER NOT NULL,
@@ -101,9 +100,10 @@ CREATE TABLE Skill (
     codSkill INTEGER NOT NULL,
     namSkill VARCHAR NOT NULL,
     desSkill VARCHAR NOT NULL,
+    txtAssetIdentifier VARCHAR NOT NULL,
     valDamage INTEGER,
-    numEffectArea INTEGER NOT NULL,
-    numCooldown INTEGER NOT NULL,
+    numEffectArea INTEGER,
+    numCooldown INTEGER NOT NULL, -- milliseconds
     idtAttributeBuff BOOLEAN NOT NULL,
     PRIMARY KEY (codSkill, codHero)
 );
@@ -118,6 +118,7 @@ CREATE TABLE Scene (
     codCutscene INTEGER NOT NULL REFERENCES Cutscene (codCutscene),
     codScene INTEGER NOT NULL,
     desScene VARCHAR NOT NULL,
+    txtImagePath VARCHAR NOT NULL,
     PRIMARY KEY (codCutscene, codScene)
 );
 
@@ -125,13 +126,61 @@ CREATE TABLE Speak (
     codCutscene INTEGER NOT NULL,
     codScene INTEGER NOT NULL,
     codSpeak INTEGER NOT NULL,
+    txtSpeak VARCHAR NOT NULL,
     FOREIGN KEY (codCutscene, codScene) REFERENCES Scene (codCutscene, codScene),
     PRIMARY KEY (codCutscene, codScene, codSpeak)
 );
 
-CREATE TABLE AssetFilter (
-    namTable VARCHAR NOT NULL,
-    txtAssetFilter VARCHAR,
-    txtAssetPath VARCHAR,
-    PRIMARY KEY (namTable)
-);
+-- "INSERT INTO" section
+
+INSERT INTO AssetFilter (namTable, txtAssetFilter, txtAssetPath) VALUES
+	('phase', 'phase', 'Prefabs/Phase'),
+	('troop', 'troop', 'Prefabs/Troop'),
+	('barrack', 'barrack', 'Prefabs/Barrack'),
+	('tower', 'tower', 'Prefabs/Tower'),
+	('hero', 'hero', 'Prefabs/Hero'),
+	('skill', 'skill', '"Hero Skill"'),
+	('scene', 'scene', 'Sprites/Scene');
+
+INSERT INTO Part (codPart, namPart) VALUES
+	(1, 'Parte 1');
+
+INSERT INTO Phase (codPart, numPhase, namPhase, valIniPlayerMoney, valIniIAMoney, idtPhaseType) VALUES
+	(1, 1, 'Fase 1', 250, 200, 'Defense'),
+	(1, 2, 'Fase 2', 350, 300, 'Attack');
+
+INSERT INTO GameUser (idtGoogleAccount, numCurrentPhase, namUser) VALUES
+	('abc123', 1, 'Nome do Usuário');
+	
+INSERT INTO Score (idtGoogleAccount, numPhase, valRecordPoints) VALUES
+	('abc123', 1, 5000);
+
+INSERT INTO Troop (codTroop, namTroop, txtAssetIdentifier, valDamageDealt, valHp, valScore, valMotionSpeed, valAttackSpeed, valDropMoney) VALUES
+	(1, 'Mage', 'Mage', 10, 20, 10, 1, 1, 20);
+
+INSERT INTO Barrack (codBarrack, codPart, codTroop, namBarrack, desBarrack, valSpawnFrequency, valCost, numTroopLimit) VALUES
+	(1, 1, 1, 'Caserna 1', 'Des. Caserna 1', 1, 100, 10);
+
+INSERT INTO Tower (codTower, valHp, numEffectArea) VALUES
+	(1, 50, 5);
+	
+INSERT INTO Hero (codHero, codPart, namHero, desHero, txtAssetIdentifier, valHp, valScore, valDamageDealt, valMotionSpeed, valAttackSpeed, valDropMoney) VALUES
+	(1, 1, 'Herói 1', 'Des. Herói 1', 'DefenseHero', 50, 1000, 5, 1, 1, 100);
+	
+INSERT INTO Skill (codHero, codSkill, namSkill, desSkill, txtAssetIdentifier, valDamage, numEffectArea, numCooldown, idtAttributeBuff) VALUES
+	(1, 1, 'Habilidade 1', 'Des. Habilidade 1', 'Shield', NULL, NULL, 8000, TRUE),
+	(1, 2, 'Habilidade 2', 'Des. Habilidade 2', 'Barrier', NULL, 5, 10000, FALSE);
+	
+INSERT INTO Cutscene (codCutscene, codPart) VALUES
+	(1, 1);
+	
+INSERT INTO Scene (codCutscene, codScene, desScene, txtImagePath) VALUES
+	(1, 1, 'Des. Cena 1.1', 'img1.png'),
+	(1, 2, 'Des. Cena 1.2', 'img2.png');
+	
+INSERT INTO Speak (codCutscene, codScene, codSpeak, txtSpeak) VALUES
+	(1, 1, 1, 'Fala 1.1.1'),
+	(1, 1, 2, 'Fala 1.1.2'),
+	(1, 2, 1, 'Fala 1.2.1'),
+	(1, 2, 2, 'Fala 1.2.2');
+	

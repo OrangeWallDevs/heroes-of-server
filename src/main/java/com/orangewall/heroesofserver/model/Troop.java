@@ -9,14 +9,15 @@ public class Troop {
     
     @PrimaryKey private Integer codTroop;
     private String namTroop;
+    private String txtAssetIdentifier;
     private Integer valDamageDealt;
     private Integer valHp;
     private Integer valScore;
-    private Float valMotionSpeed;
-    private Float valAttackSpeed;
+    private Double valMotionSpeed;
+    private Double valAttackSpeed;
     private Integer valDropMoney;
 
-    public Troop(Integer codTroop, String namTroop, Integer valDamageDealt, Integer valHp, Integer valScore, Float valMotionSpeed, Float valAttackSpeed, Integer valDropMoney) {
+    public Troop(Integer codTroop, String namTroop, Integer valDamageDealt, Integer valHp, Integer valScore, Double valMotionSpeed, Double valAttackSpeed, Integer valDropMoney) {
         this.codTroop = codTroop;
         this.namTroop = namTroop;
         this.valDamageDealt = valDamageDealt;
@@ -46,6 +47,14 @@ public class Troop {
         this.namTroop = namTroop;
     }
 
+    public String getTxtAssetIdentifier() {
+        return txtAssetIdentifier;
+    }
+
+    public void setTxtAssetIdentifier(String txtAssetIdentifier) {
+        this.txtAssetIdentifier = txtAssetIdentifier;
+    }
+
     public Integer getValDamageDealt() {
         return valDamageDealt;
     }
@@ -70,19 +79,19 @@ public class Troop {
         this.valScore = valScore;
     }
 
-    public Float getValMotionSpeed() {
+    public Double getValMotionSpeed() {
         return valMotionSpeed;
     }
 
-    public void setValMotionSpeed(Float valMotionSpeed) {
+    public void setValMotionSpeed(Double valMotionSpeed) {
         this.valMotionSpeed = valMotionSpeed;
     }
 
-    public Float getValAttackSpeed() {
+    public Double getValAttackSpeed() {
         return valAttackSpeed;
     }
 
-    public void setValAttackSpeed(Float valAttackSpeed) {
+    public void setValAttackSpeed(Double valAttackSpeed) {
         this.valAttackSpeed = valAttackSpeed;
     }
 

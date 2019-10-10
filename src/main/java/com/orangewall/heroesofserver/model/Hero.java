@@ -11,14 +11,15 @@ public class Hero {
     private Integer codPart;
     private String namHero;
     private String desHero;
+    private String txtAssetIdentifier;
     private Integer valHp;
     private Integer valScore;
     private Integer valDamageDealt;
-    private Float valMotionSpeed;
-    private Float valAttackSpeed;
+    private Double valMotionSpeed;
+    private Double valAttackSpeed;
     private Integer valDropMoney;
 
-    public Hero(Integer codHero, Integer codPart, String namHero, String desHero, Integer valHp, Integer valScore, Integer valDamageDealt, Float valMotionSpeed, Float valAttackSpeed, Integer valDropMoney) {
+    public Hero(Integer codHero, Integer codPart, String namHero, String desHero, Integer valHp, Integer valScore, Integer valDamageDealt, Double valMotionSpeed, Double valAttackSpeed, Integer valDropMoney) {
         this.codHero = codHero;
         this.codPart = codPart;
         this.namHero = namHero;
@@ -66,6 +67,14 @@ public class Hero {
         this.desHero = desHero;
     }
 
+    public String getTxtAssetIdentifier() {
+        return txtAssetIdentifier;
+    }
+
+    public void setTxtAssetIdentifier(String txtAssetIdentifier) {
+        this.txtAssetIdentifier = txtAssetIdentifier;
+    }
+
     public Integer getValHp() {
         return valHp;
     }
@@ -90,19 +99,19 @@ public class Hero {
         this.valDamageDealt = valDamageDealt;
     }
 
-    public Float getValMotionSpeed() {
+    public Double getValMotionSpeed() {
         return valMotionSpeed;
     }
 
-    public void setValMotionSpeed(Float valMotionSpeed) {
+    public void setValMotionSpeed(Double valMotionSpeed) {
         this.valMotionSpeed = valMotionSpeed;
     }
 
-    public Float getValAttackSpeed() {
+    public Double getValAttackSpeed() {
         return valAttackSpeed;
     }
 
-    public void setValAttackSpeed(Float valAttackSpeed) {
+    public void setValAttackSpeed(Double valAttackSpeed) {
         this.valAttackSpeed = valAttackSpeed;
     }
 

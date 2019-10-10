@@ -11,6 +11,7 @@ public class Skill {
     @PrimaryKey private Integer codHero;
     private String namSkill;
     private String desSkill;
+    private String txtAssetIdentifier;
     private Integer valDamage;
     private Integer numEffectArea;
     private Integer numCooldown;
@@ -62,6 +63,14 @@ public class Skill {
         this.desSkill = desSkill;
     }
 
+    public String getTxtAssetIdentifier() {
+        return txtAssetIdentifier;
+    }
+
+    public void setTxtAssetIdentifier(String txtAssetIdentifier) {
+        this.txtAssetIdentifier = txtAssetIdentifier;
+    }
+    
     public Integer getValDamage() {
         return valDamage;
     }
