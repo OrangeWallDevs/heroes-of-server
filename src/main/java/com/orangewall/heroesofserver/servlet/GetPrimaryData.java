@@ -22,6 +22,7 @@ public class GetPrimaryData extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         
+        resp.setCharacterEncoding("UTF-8");
         Class<?>[] entityClasses = {
             GameUser.class, Part.class, Phase.class, Score.class, Troop.class,
             Barrack.class, Tower.class, Hero.class, Skill.class, Cutscene.class,
