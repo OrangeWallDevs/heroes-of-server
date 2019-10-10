@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/getGamePrimaryData")
+@WebServlet("/getPrimaryData")
 public class GetPrimaryData extends HttpServlet {
 
     @Override
