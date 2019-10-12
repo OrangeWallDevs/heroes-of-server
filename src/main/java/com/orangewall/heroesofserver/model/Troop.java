@@ -16,6 +16,8 @@ public class Troop {
     private Double valMotionSpeed;
     private Double valAttackSpeed;
     private Integer valDropMoney;
+    private Double valAttackDistance;
+    private Boolean idtAttackAtDistance;
 
     public Troop(Integer codTroop, String namTroop, Integer valDamageDealt, Integer valHp, Integer valScore, Double valMotionSpeed, Double valAttackSpeed, Integer valDropMoney) {
         this.codTroop = codTroop;
@@ -101,6 +103,22 @@ public class Troop {
 
     public void setValDropMoney(Integer valDropMoney) {
         this.valDropMoney = valDropMoney;
+    }
+    
+    public Double getValAttackDistance() {
+        return valAttackDistance;
+    }
+
+    public void setValAttackDistance(Double valAttackDistance) {
+        this.valAttackDistance = valAttackDistance;
+    }
+
+    public Boolean getIdtAttackAtDistance() {
+        return idtAttackAtDistance;
+    }
+
+    public void setIdtAttackAtDistance(Boolean idtAttackAtDistance) {
+        this.idtAttackAtDistance = idtAttackAtDistance;
     }
     
 }

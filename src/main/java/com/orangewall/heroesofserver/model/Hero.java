@@ -18,6 +18,8 @@ public class Hero {
     private Double valMotionSpeed;
     private Double valAttackSpeed;
     private Integer valDropMoney;
+    private Double valAttackDistance;
+    private Boolean idtAttackAtDistance;
 
     public Hero(Integer codHero, Integer codPart, String namHero, String desHero, Integer valHp, Integer valScore, Integer valDamageDealt, Double valMotionSpeed, Double valAttackSpeed, Integer valDropMoney) {
         this.codHero = codHero;
@@ -121,6 +123,22 @@ public class Hero {
 
     public void setValDropMoney(Integer valDropMoney) {
         this.valDropMoney = valDropMoney;
+    }
+
+    public Double getValAttackDistance() {
+        return valAttackDistance;
+    }
+
+    public void setValAttackDistance(Double valAttackDistance) {
+        this.valAttackDistance = valAttackDistance;
+    }
+
+    public Boolean getIdtAttackAtDistance() {
+        return idtAttackAtDistance;
+    }
+
+    public void setIdtAttackAtDistance(Boolean idtAttackAtDistance) {
+        this.idtAttackAtDistance = idtAttackAtDistance;
     }
     
 }

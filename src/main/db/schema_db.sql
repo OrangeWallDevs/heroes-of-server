@@ -58,6 +58,8 @@ CREATE TABLE Troop (
     valMotionSpeed FLOAT NOT NULL,
     valAttackSpeed FLOAT NOT NULL,
     valDropMoney INTEGER NOT NULL,
+    valAttackDistance FLOAT NOT NULL,
+    idtAttackAtDistance BOOLEAN NOT NULL,
     PRIMARY KEY (codTroop)
 );
 
@@ -92,6 +94,8 @@ CREATE TABLE Hero (
     valMotionSpeed FLOAT NOT NULL,
     valAttackSpeed FLOAT NOT NULL,
     valDropMoney INTEGER NOT NULL,
+    valAttackDistance FLOAT NOT NULL,
+    idtAttackAtDistance BOOLEAN NOT NULL,
     PRIMARY KEY (codHero)
 );
 
@@ -155,8 +159,8 @@ INSERT INTO GameUser (idtGoogleAccount, numCurrentPhase, namUser) VALUES
 INSERT INTO Score (idtGoogleAccount, numPhase, valRecordPoints) VALUES
 	('abc123', 1, 5000);
 
-INSERT INTO Troop (codTroop, namTroop, txtAssetIdentifier, valDamageDealt, valHp, valScore, valMotionSpeed, valAttackSpeed, valDropMoney) VALUES
-	(1, 'Mage', 'Mage', 10, 20, 10, 1, 1, 20);
+INSERT INTO Troop (codTroop, namTroop, txtAssetIdentifier, valDamageDealt, valHp, valScore, valMotionSpeed, valAttackSpeed, valDropMoney, valAttackDistance, idtAttackAtDistance) VALUES
+	(1, 'Mage', 'Mage', 10, 20, 10, 1, 1, 20, 1, TRUE);
 
 INSERT INTO Barrack (codBarrack, codPart, codTroop, namBarrack, desBarrack, valSpawnFrequency, valCost, numTroopLimit) VALUES
 	(1, 1, 1, 'Caserna 1', 'Des. Caserna 1', 1, 100, 10);
@@ -164,8 +168,8 @@ INSERT INTO Barrack (codBarrack, codPart, codTroop, namBarrack, desBarrack, valS
 INSERT INTO Tower (codTower, valHp, numEffectArea) VALUES
 	(1, 50, 5);
 	
-INSERT INTO Hero (codHero, codPart, namHero, desHero, txtAssetIdentifier, valHp, valScore, valDamageDealt, valMotionSpeed, valAttackSpeed, valDropMoney) VALUES
-	(1, 1, 'Herói 1', 'Des. Herói 1', 'DefenseHero', 50, 1000, 5, 1, 1, 100);
+INSERT INTO Hero (codHero, codPart, namHero, desHero, txtAssetIdentifier, valHp, valScore, valDamageDealt, valMotionSpeed, valAttackSpeed, valDropMoney, valAttackDistance, idtAttackAtDistance) VALUES
+	(1, 1, 'Herói 1', 'Des. Herói 1', 'DefenseHero', 50, 1000, 5, 1, 1, 100, 1, FALSE);
 	
 INSERT INTO Skill (codHero, codSkill, namSkill, desSkill, txtAssetIdentifier, valDamage, numEffectArea, numCooldown, idtAttributeBuff) VALUES
 	(1, 1, 'Habilidade 1', 'Des. Habilidade 1', 'Shield', NULL, NULL, 8000, TRUE),
