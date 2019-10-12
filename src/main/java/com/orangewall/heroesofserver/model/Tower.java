@@ -10,6 +10,7 @@ public class Tower {
     @PrimaryKey private Integer codTower;
     private Integer valHp;
     private Integer numEffectArea;
+    private Boolean idtIsEnemy;
 
     public Tower(Integer codTower, Integer valHp, Integer numEffectArea) {
         this.codTower = codTower;
@@ -42,6 +43,14 @@ public class Tower {
 
     public void setNumEffectArea(Integer numEffectArea) {
         this.numEffectArea = numEffectArea;
+    }
+
+    public Boolean getIdtIsEnemy() {
+        return idtIsEnemy;
+    }
+
+    public void setIdtIsEnemy(Boolean idtIsEnemy) {
+        this.idtIsEnemy = idtIsEnemy;
     }
     
 }

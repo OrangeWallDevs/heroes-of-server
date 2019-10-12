@@ -79,6 +79,7 @@ CREATE TABLE Tower (
     codTower INTEGER NOT NULL,
     valHp INTEGER NOT NULL,
     numEffectArea INTEGER NOT NULL,
+    idtIsEnemy BOOLEAN NOT NULL,
     PRIMARY KEY (codTower)
 );
 
@@ -165,8 +166,9 @@ INSERT INTO Troop (codTroop, namTroop, txtAssetIdentifier, valDamageDealt, valHp
 INSERT INTO Barrack (codBarrack, codPart, codTroop, namBarrack, desBarrack, valSpawnFrequency, valCost, numTroopLimit) VALUES
 	(1, 1, 1, 'Caserna 1', 'Des. Caserna 1', 1, 100, 10);
 
-INSERT INTO Tower (codTower, valHp, numEffectArea) VALUES
-	(1, 50, 5);
+INSERT INTO Tower (codTower, valHp, numEffectArea, idtIsEnemy) VALUES
+	(1, 50, 5, FALSE),
+	(2, 50, 5, TRUE);
 	
 INSERT INTO Hero (codHero, codPart, namHero, desHero, txtAssetIdentifier, valHp, valScore, valDamageDealt, valMotionSpeed, valAttackSpeed, valDropMoney, valAttackDistance, idtAttackAtDistance) VALUES
 	(1, 1, 'Herói 1', 'Des. Herói 1', 'DefenseHero', 50, 1000, 5, 1, 1, 100, 1, FALSE);
