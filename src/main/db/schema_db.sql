@@ -144,7 +144,7 @@ INSERT INTO AssetFilter (namTable, txtAssetFilter, txtAssetPath) VALUES
 	('barrack', 'barrack', 'Prefabs/Barrack'),
 	('tower', 'tower', 'Prefabs/Tower'),
 	('hero', 'hero', 'Prefabs/Hero'),
-	('skill', 'skill', '"Hero Skill"'),
+	('skill', 'skill', 'Scriptable Objects/Skill'),
 	('scene', 'scene', 'Sprites/Scene');
 
 INSERT INTO Part (codPart, namPart) VALUES
@@ -181,8 +181,8 @@ INSERT INTO Cutscene (codCutscene, codPart) VALUES
 	(1, 1);
 	
 INSERT INTO Scene (codCutscene, codScene, desScene, txtImagePath) VALUES
-	(1, 1, 'Des. Cena 1.1', 'img1.png'),
-	(1, 2, 'Des. Cena 1.2', 'img2.png');
+	(1, 1, 'Des. Cena 1.1', 'img1'), -- sem extensão
+	(1, 2, 'Des. Cena 1.2', 'img2');
 	
 INSERT INTO Speak (codCutscene, codScene, codSpeak, txtSpeak) VALUES
 	(1, 1, 1, 'Fala 1.1.1'),
