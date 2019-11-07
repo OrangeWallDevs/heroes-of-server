@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 /**
  * Agrupa métodos estáticos para manipulação de dados no formato JSON.
@@ -46,6 +47,24 @@ public final class JSON {
     public static <T> T parse(String json, Class<T> objClass) {
         try {
             return GSON.fromJson(json, objClass);
+        } catch (JsonSyntaxException jsex) {
+            System.out.println("Erro na conversão: " + jsex);
+            return null;
+        }
+    }
+    
+    /**
+     * Converte uma string contendo dados no formato JSON em um
+     * objeto de uma classe específica.
+     * 
+     * @param <T>      o tipo do objeto resultante da conversão da string
+     * @param json     a string a ser convertida em objeto
+     * @param objType  o tipo ao qual o objeto resultante percence (T)
+     * @return         o objeto resultante da conversão
+     */
+    public static <T> T parse(String json, Type objType) {
+        try {
+            return GSON.fromJson(json, objType);
         } catch (JsonSyntaxException jsex) {
             System.out.println("Erro na conversão: " + jsex);
             return null;
