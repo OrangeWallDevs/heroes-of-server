@@ -70,8 +70,7 @@ public final class SQL {
     public static boolean insert(Object objeto) throws NotTableException {
         
         Map<String, String> campos = getCampos(objeto, false);
-        String[] nomesCampos = campos.keySet().stream()
-                .map(nome -> String.format("\"%s\"", nome)).toArray(String[]::new);
+        String[] nomesCampos = campos.keySet().stream().toArray(String[]::new);
         String[] valoresCampos = campos.values().stream().toArray(String[]::new);
         String sql = "INSERT INTO " + getNomeTabela(objeto.getClass())
                 + " (" + String.join(", ", nomesCampos) + ")"
@@ -129,11 +128,11 @@ public final class SQL {
             if (value == null) {
                 return false;
             }
-            primaryKeysFormatted.add(String.format("\"%s\" = %s", name, value));
+            primaryKeysFormatted.add(String.format("%s = %s", name, value));
         }        
         
         String[] camposUpdate = campos.keySet().stream()
-                .map(nome -> String.format("\"%s\" = %s", nome, campos.get(nome)))
+                .map(nome -> String.format("%s = %s", nome, campos.get(nome)))
                 .toArray(String[]::new);
         String sql = "UPDATE " + getNomeTabela(objeto.getClass())
                 + " SET " + String.join(", ", camposUpdate)
@@ -159,7 +158,7 @@ public final class SQL {
        
         Map<String, String> primaryKeys = getPrimaryKeys(objeto);
         List<String> primaryKeysFormatted = primaryKeys.keySet().stream()
-                .map(key -> String.format("\"%s\" = %s", key, primaryKeys.get(key)))
+                .map(key -> String.format("%s = %s", key, primaryKeys.get(key)))
                 .collect(Collectors.toList());
         
         String sql = "DELETE FROM " + getNomeTabela(objeto.getClass())
@@ -278,8 +277,6 @@ public final class SQL {
     }
     
     public static Map<String, String> getPrimaryKeys(Object objeto) throws NotTableException {
-        
-        System.out.println("ué");
         
         Map<String, String> campos = getCampos(objeto, false),
                             primaryKeys = new HashMap<>();
